@@ -1,19 +1,14 @@
 body {
     background: linear-gradient(to right, rgb(75, 121, 161), rgb(40, 62, 81));
     padding: 5rem;
-  }
-  
-  #main-div {
-    border: black solid 1px;
+}
+
+#main-div {
+    /* border: black solid 1px; */
     margin: auto;
-    width: 750px;
+    width: 1000px;
     height: 1000px;
-  }
-  
-  #head {
-  }
-  
-  span {
-    background-color: transparent;
-  }
-  
+}
+
+#head {}
+
