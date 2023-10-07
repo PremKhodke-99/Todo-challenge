@@ -1,4 +1,4 @@
-const time = new Date().toLocaleDateString("en-us", {
+const time = new Date().toLocaleDateString("en-in", {
     weekday: "long",
     year: "numeric",
     month: "short",
@@ -6,10 +6,16 @@ const time = new Date().toLocaleDateString("en-us", {
 });
 document.getElementById("time").innerText = time;
 
+
+// const initialArr = localStorage.getItem("todos")?JSON.parse(localStorage.getItem("todos")):[];
+
+
 const list = document.getElementById("todo-list");
 const form = document.getElementById("task-form");
 
 let count = 1;
+
+let storage = localStorage.length !== 0 ? JSON.parse(localStorage.get("todos")) : [];
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -17,6 +23,8 @@ form.addEventListener("submit", (event) => {
     const task = form.elements["todo-task"].value;
 
     if (task !== "") {
+        store(task);
+
         const li = document.createElement("li");
         li.className = "list-group-item p-3";
 
@@ -46,6 +54,12 @@ form.addEventListener("submit", (event) => {
         list.appendChild(li);
     }
 });
+
+let storage1 = [];
+function store(task){
+    storage1.push(task);
+    localStorage.setItem("todos",JSON.stringify(storage1)),[];
+};
 
 let clear = document.getElementById("clear-btn");
 clear.addEventListener("click", function () {
