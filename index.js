@@ -15,10 +15,7 @@ const form = document.getElementById("task-form");
 
 let count = 1;
 
-let storage = localStorage.length !== null ? JSON.parse(localStorage.get("todos")) : [];
-storage.forEach(task => {
-    createTodo(task);
-});
+let storage = localStorage.length !== 0 ? JSON.parse(localStorage.get("todos")) : [];
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -27,11 +24,7 @@ form.addEventListener("submit", (event) => {
 
     if (task !== "") {
         store(task);
-        createTodo(task);
-    }
-});
 
-function createTodo(task){
         const li = document.createElement("li");
         li.className = "list-group-item p-3";
 
@@ -59,7 +52,8 @@ function createTodo(task){
 
         li.append(check, label);
         list.appendChild(li);
-}
+    }
+});
 
 let storage1 = [];
 function store(task){
