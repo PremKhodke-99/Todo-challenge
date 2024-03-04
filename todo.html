@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    #todoInput {
+      width: 300px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    #todoList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .todoItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      padding: 8px;
+      width: 300px;
+    }
+
+    .deleteButton {
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Todo List</title>
+</head>
+<body>
+
+  <h1>Todo List</h1>
+  
+  <input type="text" id="todoInput" placeholder="Add a new todo">
+  <button onclick="addTodo()">Add</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    function addTodo() {
+      var todoInput = document.getElementById('todoInput');
+      var todoList = document.getElementById('todoList');
+
+      if (todoInput.value.trim() === '') {
+        alert('Please enter a valid todo.');
+        return;
+      }
+
+      // Create a new todo item
+      var todoItem = document.createElement('li');
+      todoItem.className = 'todoItem';
+      todoItem.innerHTML = `
+        <span>${todoInput.value}</span>
+        <button class="deleteButton" onclick="deleteTodo(this)">Delete</button>
+      `;
+
+      // Append the todo item to the list
+      todoList.appendChild(todoItem);
+
+      // Clear the input field
+      todoInput.value = '';
+    }
+
+    function deleteTodo(button) {
+      var todoItem = button.parentElement;
+      todoItem.remove();
+    }
+  </script>
+
+</body>
+</html>

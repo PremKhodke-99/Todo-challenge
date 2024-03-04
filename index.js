@@ -15,7 +15,7 @@ const form = document.getElementById("task-form");
 
 let count = 1;
 
-let storage = localStorage.length !== 0 ? JSON.parse(localStorage.get("todos")) : [];
+let storage = localStorage.length !== 0 ? JSON.parse(localStorage.getItem("todos")) : [];
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
